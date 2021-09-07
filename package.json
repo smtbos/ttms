@@ -1,0 +1,21 @@
+{
+  "name": "ttms",
+  "version": "1.0.0",
+  "description": "Team Task Managment System",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/smtbos/ttms.git"
+  },
+  "keywords": [
+    "Team",
+    "Task",
+    "Managment",
+    "System"
+  ],
+  "author": "Smit Bosamiya (smtbos)",
+  "license": "ISC"
+}
