@@ -1,0 +1,145 @@
+<div class="content-wrapper">
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0">Dashboard</h1>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+            <li class="breadcrumb-item active">Tasks</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+  <section class="content">
+    <div class="container-fluid">
+      <% if (ptasks.length > 0) { %>
+      <div class="row">
+        <div class="col-12">
+          <div class="card card-outline card-primary">
+            <div class="card-header">
+              <h3 class="card-title">
+                Approve Task Request
+              </h3>
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <% ptasks.forEach(ptask => { %>
+                <div class="col-6">
+                  <div class="card h-100">
+                    <div class="card-header">
+                      <div class="row">
+                        <div class="col-4"><%- ptask.user.name %></div>
+                        <div class="col-4"><%- ptask.platform %></div>
+                        <div class="col-4"><%= `${ptask.date.getDate()} / ${ptask.date.getMonth()+1} / ${ptask.date.getFullYear()}`%></div>
+                      </div>
+                    </div>
+                    <div class="card-header">
+                      <%- ptask.title %>
+                    </div>
+                    <div class="card-body">
+                      <%- ptask.description %>
+                    </div>
+                    <div class="card-footer">
+                      <button class="btn btn-primary">Approve</button>
+                    </div>
+                  </div>
+                </div>
+                <% }) %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% } %>
+      <form action="" method="post">
+        <div class="row">
+          <div class="col-12">
+            <div class="card card-outline card-primary">
+              <div class="card-header">
+                <h3 class="card-title">
+                  Create New Tasks
+                </h3>
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                    <i class="fas fa-minus"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="card-body pb-2">
+                <div class="row">
+                  <div class="col-6 form-group">
+                    <label>Task Title</label>
+                    <input type="text" name="title" id="title" class="form-control">
+                  </div>
+                  <div class="col-3 form-group">
+                    <label>Select Platform</label>
+                    <select name="platform" id="platform" class="form-control">
+                      <option>Python</option>
+                      <option>PHP</option>
+                      <option>NodeJS</option>
+                    </select>
+                  </div>
+                  <div class="col-3 form-group">
+                    <label>Select Date</label>
+                    <input type="date" name="date" id="date" class="form-control">
+                  </div>
+                  <div class="col-12 form-group">
+                    <label>Task Description</label>
+                    <textarea name="description" id="description" class="form-control"></textarea>
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer">
+                <input type="submit" value="Create Task" class="btn btn-success">
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+      <% if (tasks.length > 0) { %>
+      <div class="row">
+        <div class="col-12">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Given by</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% tasks.forEach(task => { %>
+              <tr>
+                <td><%= `${task.date.getDate()} / ${task.date.getMonth()+1} / ${task.date.getFullYear()}`%></td>
+                <td><%- task.user.name %></td>
+                <td><%- task.title %></td>
+                <td><%- task.description %></td>
+                <td>
+                  <% if (task.status == 0) { %>
+                  Not Approved
+                  <% } else if (task.status == 1) { %>
+                  Approved (Not Done)
+                  <% } else if (task.status == 2) { %>
+                  Done By All
+                  <% } %>
+                </td>
+                <td>
+                  <a href="tasks/<%- task._id %>"><button>View</button></a>
+                </td>
+              </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <% } %>
+    </div>
+  </section>
+</div>

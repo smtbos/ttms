@@ -1,0 +1,9 @@
+Task Status
+0 - Not Approved
+2 - Approved (Not Done)
+4 - Done By All
+
+Submission Status
+0 - Not Done
+1 - Pending For Approval
+2 - Approved(Done)

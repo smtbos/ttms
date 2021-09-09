@@ -1,0 +1,58 @@
+<div class="content-wrapper">
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0">View Task</h1>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+            <li class="breadcrumb-item"><a href="/tasks">Tasks</a></li>
+            <li class="breadcrumb-item active">View</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="card card-outline card-primary">
+            <div class="card-header">
+              <h3 class="card-title">
+                View Task
+              </h3>
+            </div>
+            <div class="card-body pb-2">
+              <div class="row">
+                <div class="col-6 form-group">
+                  <label>Task Title</label>
+                  <input type="text" name="title" id="title" value="<%- task.title %>" class="form-control" readonly>
+                </div>
+                <div class="col-3 form-group">
+                  <label>Select Platform</label>
+                  <select name="platform" id="platform" class="form-control" readonly>
+                    <option><%- task.platform %></option>
+                  </select>
+                </div>
+                <div class="col-3 form-group">
+                  <label>Select Date</label>
+                  <input type="date" name="date" id="date" class="form-control">
+                </div>
+                <div class="col-12 form-group">
+                  <label>Task Description</label>
+                  <textarea name="description" id="description" class="form-control"></textarea>
+                </div>
+              </div>
+            </div>
+            <div class="card-footer">
+              <input type="submit" value="Create Task" class="btn btn-success">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

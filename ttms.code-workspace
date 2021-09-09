@@ -1,0 +1,15 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		// "html-css-class-completion.includeGlobPattern": "**/dist/css/*.{css}",
+		"html-css-class-completion.excludeGlobPattern": "**/*.{css,html}",
+		"cSpell.words": [
+			"ptask",
+			"ptasks"
+		]
+	}
+}
