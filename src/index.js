@@ -69,8 +69,13 @@ app.post("/tasks", auth, async (req, res) => {
     }
 });
 
-app.get("/login", (req, res) => {
-    res.render("login", { layout: path.join(__dirname, './templates/layouts/form') });
+app.get("/login", async (req, res) => {
+    const user = await User.find({});
+    if (user.length > 0) {
+        res.render("login", { layout: path.join(__dirname, './templates/layouts/form') });
+    }else{
+        res.redirect('/setup');
+    }
 });
 
 app.post("/login", async (req, res) => {
@@ -107,7 +112,26 @@ app.post("/login", async (req, res) => {
     );
 });
 
-const PORT = 5000;
+app.get("/setup", async (req, res) => {
+    const user = await User.find({});
+    if (user.length == 0) {
+        res.render("setup", { layout: path.join(__dirname, './templates/layouts/form') });
+    }else{
+        res.status(403).redirect('/login');
+    }
+}); 
+
+app.post("/setup", async (req, res) => {
+    const user = new User(req.body);
+    try {
+        await user.save();
+        res.redirect("/login");
+    } catch (error) {
+        res.json(error);
+    }
+});
+
+const PORT = process.env.PORT;
 const server = app.listen(PORT, () => {
     console.log(`Server Running at port: ${PORT}`);
 })
